@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
 const STORAGE_KEY = "rag-assistant-state";
 const NO_DOC_KEY = "__general__"; // conversation quand aucun document n'est sélectionné
 

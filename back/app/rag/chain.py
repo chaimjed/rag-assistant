@@ -1,6 +1,8 @@
 import json
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
+
+from app.config import OLLAMA_BASE_URL
 from app.rag.retriever import get_retriever
 
 ANSWER_PROMPT = """Réponds à la question en te basant UNIQUEMENT sur le contexte suivant.
@@ -26,7 +28,7 @@ Question reformulée:"""
 
 
 def get_llm():
-    return ChatOllama(model="llama3.1", keep_alive="30m")
+    return ChatOllama(model="llama3.1", keep_alive="30m", base_url=OLLAMA_BASE_URL)
 
 
 def format_docs(docs):

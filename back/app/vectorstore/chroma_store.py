@@ -1,13 +1,15 @@
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 
+from app.config import OLLAMA_BASE_URL
+
 PERSIST_DIR = "chroma_db"
 COLLECTION_NAME = "documents"
 
 
 def get_vectorstore():
     """Retourne l'instance ChromaDB persistante, avec les embeddings Ollama."""
-    embeddings = OllamaEmbeddings(model="nomic-embed-text")
+    embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url=OLLAMA_BASE_URL)
     return Chroma(
         collection_name=COLLECTION_NAME,
         embedding_function=embeddings,
