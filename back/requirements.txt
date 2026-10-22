@@ -1,8 +1,11 @@
 fastapi
-uvicorn 
-langchain 
+uvicorn
+langchain
 langchain-community
 langchain-ollama
+langchain-chroma
+langchain-text-splitters
 chromadb
 pypdf
+fonttools
 python-multipart

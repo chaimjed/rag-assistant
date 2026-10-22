@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./back
+    ports:
+      - "8000:8000"
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - chroma_data:/app/chroma_db
+      - uploads_data:/app/uploaded_docs
+
+  frontend:
+    build:
+      context: ./front
+      args:
+        NEXT_PUBLIC_API_URL: http://127.0.0.1:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  chroma_data:
+  uploads_data:
